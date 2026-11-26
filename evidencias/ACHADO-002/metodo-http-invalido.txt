@@ -1,0 +1,19 @@
+HTTP/2 200 
+date: Thu, 26 Nov 2026 12:28:40 GMT
+content-type: text/html; charset=utf-8
+content-length: 73
+vary: Accept,Cookie,Accept-Encoding
+referrer-policy: same-origin
+x-frame-options: DENY
+x-content-type-options: nosniff
+allow: OPTIONS, DELETE, PUT, GET, POST
+x-powered-by: Phusion Passenger(R) 6.2.2
+status: 200 OK
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+server: cloudflare
+cf-cache-status: DYNAMIC
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=QNOU7HC7wSTR%2FuVUj%2B4HUbIJQVn%2FmOMaC6nUwF9NlIQuUQxnVVLTOqNoNhTeXAqgAmEQjUzz7%2F%2FC46K3%2B2RS%2BbdQ64CNyLsllUJQ8iC34utF7TaX89FxqDJl3vS5R%2BMiFmjVEktOLQb%2BEw%2BERg%3D%3D"}]}
+cf-ray: a608e4ebddb0c48c-IAD
+alt-svc: h3=":443"; ma=86400
+
+{"responseCode": 405, "message": "This request method is not supported."}
