@@ -7,6 +7,7 @@ import DetalhesProdutoPage from "../pages/DetalhesProdutoPage";
 import CarrinhoPage from "../pages/CarrinhoPage";
 import CheckoutPage from "../pages/CheckoutPage";
 import PagamentoPage from "../pages/PagamentoPage";
+import { converterPreco } from "../utils/moeda";
 
 describe("Compra completa - E2E", () => {
   let usuario;
@@ -52,13 +53,9 @@ describe("Compra completa - E2E", () => {
 });
 
   it("deve realizar uma compra completa com sucesso", () => {
-    const precoUnitario = Number(
-      produto.price.replace("Rs.", "").trim()
-    );
+    const precoUnitario = converterPreco(produto.price);
 
-    const segundoPrecoUnitario = Number(
-      segundoProduto.price.replace("Rs.", "").trim()
-    );
+    const segundoPrecoUnitario = converterPreco(segundoProduto.price);
 
     const totalEsperado =
       precoUnitario * quantidade +

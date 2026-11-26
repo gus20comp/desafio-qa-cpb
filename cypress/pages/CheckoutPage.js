@@ -1,3 +1,4 @@
+import { converterPreco } from "../utils/moeda";
 
 class CheckoutPage {
   prosseguirParaCheckout() {
@@ -32,9 +33,7 @@ class CheckoutPage {
   }
 
   validarProduto(produto, quantidade) {
-    const precoUnitario = Number(
-      produto.price.replace("Rs.", "").trim()
-    );
+    const precoUnitario = converterPreco(produto.price);
 
     const subtotalEsperado = precoUnitario * quantidade;
 
@@ -51,9 +50,7 @@ class CheckoutPage {
           .should("contain.text", String(quantidade));
 
         cy.get(".cart_total_price").should(($subtotal) => {
-          const subtotalObtido = Number(
-            $subtotal.text().replace("Rs.", "").trim()
-          );
+          const subtotalObtido = converterPreco($subtotal.text());
 
           expect(subtotalObtido).to.eq(subtotalEsperado);
         });
@@ -65,9 +62,7 @@ class CheckoutPage {
       .parent()
       .find(".cart_total_price")
       .should(($total) => {
-        const totalObtido = Number(
-          $total.text().replace("Rs.", "").trim()
-        );
+        const totalObtido = converterPreco($total.text());
 
         expect(totalObtido, "Total da compra")
           .to.eq(totalEsperado);

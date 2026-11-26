@@ -1,6 +1,7 @@
 import ProdutosPage from "../pages/ProdutosPage";
 import CarrinhoPage from "../pages/CarrinhoPage";
 import DetalhesProdutoPage from "../pages/DetalhesProdutoPage";
+import { converterPreco } from "../utils/moeda";
 
 describe("Carrinho de compras - Visitante", () => {
 
@@ -67,9 +68,7 @@ quantidades.forEach((quantidade) => {
 
   it(`deve validar o subtotal para ${quantidade} unidade(s)`, () => {
 
-    const precoUnitario = Number(
-    produto.price.replace("Rs.", "").trim()
-    );
+    const precoUnitario = converterPreco(produto.price);
 
     const subtotalEsperado = precoUnitario * quantidade;
 
@@ -94,9 +93,7 @@ quantidades.forEach((quantidade) => {
     CarrinhoPage.obterSubtotal(produto.id)
       .should(($subtotal) => {
 
-        const subtotalObtido = Number(
-        $subtotal.text().replace("Rs.", "").trim()
-        );
+        const subtotalObtido = converterPreco($subtotal.text());
 
         expect(subtotalObtido).to.eq(subtotalEsperado);
 
