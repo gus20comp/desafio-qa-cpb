@@ -1,153 +1,114 @@
 
-describe("API - Ciclo de vida da conta", () => {
-  let email;
-  let contaCriada = false;
+import ContaApi from "../api/ContaApi";
+import { gerarUsuario } from "../factories/usuarioFactory";
 
-  const senha = "TesteQA@2026";
+describe("API - Ciclo de vida da conta", () => {
+  let usuario;
+  let cadastroSolicitado;
+
+  function validarDadosUsuario(dadosObtidos, dadosEsperados) {
+    const mapeamentoCampos = {
+      name: "name",
+      email: "email",
+      title: "title",
+      birth_day: "birth_date",
+      birth_month: "birth_month",
+      birth_year: "birth_year",
+      first_name: "firstname",
+      last_name: "lastname",
+      company: "company",
+      address1: "address1",
+      address2: "address2",
+      country: "country",
+      zipcode: "zipcode",
+      state: "state",
+      city: "city"
+    };
+
+    expect(dadosObtidos).to.have.property("id");
+    expect(dadosObtidos.id).not.to.be.null;
+    expect(dadosObtidos.id).not.to.be.undefined;
+
+    Object.entries(mapeamentoCampos).forEach(
+      ([campoResposta, campoCadastro]) => {
+        expect(dadosObtidos, `Campo: ${campoResposta}`)
+          .to.have.property(campoResposta);
+
+        expect(
+          dadosObtidos[campoResposta],
+          `Valor: ${campoResposta}`
+        ).to.eq(dadosEsperados[campoCadastro]);
+      }
+    );
+  }
+
+  beforeEach(() => {
+    usuario = gerarUsuario();
+    cadastroSolicitado = false;
+  });
 
   afterEach(() => {
-    if (contaCriada) {
-      cy.request({
-        method: "DELETE",
-        url: "/api/deleteAccount",
-        form: true,
-        body: { email, password: senha }
-      }).then((response) => {
-        const body = typeof response.body === "string"
-          ? JSON.parse(response.body)
-          : response.body;
-
-        expect(response.status).to.eq(200);
-        expect(body.responseCode).to.eq(200);
-
-        contaCriada = false;
-      });
+    if (cadastroSolicitado) {
+      ContaApi.excluirConta(usuario, true);
+      ContaApi.validarContaInexistente(usuario.email);
     }
   });
 
-  it("deve executar o ciclo de vida da conta", () => {
-    email = `teste.qa.${Date.now()}@exemplo.com`;
+  it("deve executar o ciclo de vida completo da conta", () => {
+    const usuarioAtualizado = {
+      ...usuario,
+      name: "Usuario QA Atualizado",
+      lastname: "Atualizado",
+      company: "Empresa QA Atualizada",
+      address1: "Rua Atualizada, 200",
+      address2: "Apartamento 20",
+      zipcode: "54321",
+      city: "Ottawa"
+    };
 
-    // 1. Cadastro
-    cy.request({
-      method: "POST",
-      url: "/api/createAccount",
-      form: true,
-      body: {
-        name: "Usuario QA",
-        email,
-        password: senha,
-        title: "Mr",
-        birth_date: "15",
-        birth_month: "5",
-        birth_year: "1995",
-        firstname: "Usuario",
-        lastname: "QA",
-        company: "Teste",
-        address1: "Rua de Teste, 100",
-        address2: "",
-        country: "Canada",
-        zipcode: "12345",
-        state: "Ontario",
-        city: "Toronto",
-        mobile_number: "1234567890"
-      }
-    }).then((response) => {
-      const body = typeof response.body === "string"
-        ? JSON.parse(response.body)
-        : response.body;
-
-      if (response.status === 200 && body.responseCode === 201) {
-        contaCriada = true;
-      }
-
-      expect(response.status).to.eq(200);
-      expect(body.responseCode).to.eq(201);
-      expect(body.message).to.include("User created");
+    // 1. Criar conta
+    cy.then(() => {
+      cadastroSolicitado = true;
+      return ContaApi.criarConta(usuario);
     });
 
-    // 2. Login
-    cy.request({
-      method: "POST",
-      url: "/api/verifyLogin",
-      form: true,
-      body: { email, password: senha }
-    }).then((response) => {
-      const body = typeof response.body === "string"
-        ? JSON.parse(response.body)
-        : response.body;
+    // 2. Validar os dados cadastrados
+    ContaApi.consultarConta(usuario.email)
+      .then((dadosObtidos) => {
+        validarDadosUsuario(dadosObtidos, usuario);
+      });
 
-      expect(response.status).to.eq(200);
-      expect(body.responseCode).to.eq(200);
-      expect(body.message).to.include("User exists");
-    });
+    // 3. Validar autenticacao
+    ContaApi.verificarLogin(usuario);
 
-    // 3. Consulta inicial
-    cy.request({
-      method: "GET",
-      url: "/api/getUserDetailByEmail",
-      qs: { email }
-    }).then((response) => {
-      const body = typeof response.body === "string"
-        ? JSON.parse(response.body)
-        : response.body;
+    // 4. Atualizar dados pessoais
+    ContaApi.atualizarConta(usuarioAtualizado);
 
-      expect(response.status).to.eq(200);
-      expect(body.responseCode).to.eq(200);
-      expect(body.user).to.have.property("email", email);
-      expect(body.user).to.have.property("name", "Usuario QA");
-    });
-    
-    // 4. Atualização
-    cy.request({
-      method: "PUT",
-      url: "/api/updateAccount",
-      form: true,
-      body: {
-        name: "Usuario QA Atualizado",
-        email,
-        password: senha,
-        title: "Mr",
-        birth_date: "15",
-        birth_month: "5",
-        birth_year: "1995",
-        firstname: "Usuario",
-        lastname: "Atualizado",
-        company: "Teste QA",
-        address1: "Rua Atualizada, 200",
-        address2: "",
-        country: "Canada",
-        zipcode: "54321",
-        state: "Ontario",
-        city: "Toronto",
-        mobile_number: "1234567890"
-      }
-    }).then((response) => {
-      const body = typeof response.body === "string"
-        ? JSON.parse(response.body)
-        : response.body;
+    // 5. Confirmar persistencia das alteracoes
+    ContaApi.consultarConta(usuario.email)
+      .then((dadosObtidos) => {
+        validarDadosUsuario(
+          dadosObtidos,
+          usuarioAtualizado
+        );
+      });
 
-      expect(response.status).to.eq(200);
-      expect(body.responseCode).to.eq(200);
-      expect(body.message).to.include("User updated");
-    });
+    // 6. Excluir conta
+    ContaApi.excluirConta(usuarioAtualizado);
 
-    // 5. Consulta após atualização
-    cy.request({
-      method: "GET",
-      url: "/api/getUserDetailByEmail",
-      qs: { email }
-    }).then((response) => {
-      const body = typeof response.body === "string"
-        ? JSON.parse(response.body)
-        : response.body;
+    // 7. Confirmar que a conta nao existe mais
+    ContaApi.validarContaInexistente(usuario.email);
 
-      expect(response.status).to.eq(200);
-      expect(body.responseCode).to.eq(200);
-      expect(body.user).to.have.property(
-        "name",
-        "Usuario QA Atualizado"
-      );
+    // 8. Validar cleanup idempotente
+    ContaApi.excluirConta(usuarioAtualizado, true)
+      .then((body) => {
+        expect(body.responseCode).to.eq(404);
+      });
+
+  // 9. Confirmar ausencia de dados residuais
+  ContaApi.validarContaInexistente(usuario.email)
+    .then(() => {
+      cadastroSolicitado = false;
     });
   });
 });

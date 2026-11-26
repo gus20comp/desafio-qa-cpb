@@ -45,10 +45,11 @@ describe("Compra completa - E2E", () => {
   });
 
   afterEach(() => {
-    if (cadastroSolicitado) {
-      ContaApi.excluirConta(usuario);
-    }
-  });
+  if (cadastroSolicitado) {
+    ContaApi.excluirConta(usuario, true);
+    ContaApi.validarContaInexistente(usuario.email);
+  }
+});
 
   it("deve realizar uma compra completa com sucesso", () => {
     const precoUnitario = Number(
