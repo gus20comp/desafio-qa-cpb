@@ -171,7 +171,7 @@ das quantidades para o fluxo de compra.
 
 Arquivo:
 
-`cypress/e2e/carrinho-known-bugs.cy.js`
+`cypress/e2e/regression/carrinho-known-bugs.cy.js`
 
 O cenário está identificado como:
 
@@ -309,7 +309,7 @@ Isso pode comprometer:
 
 Arquivo:
 
-`cypress/e2e/api-negativos.cy.js`
+`cypress/e2e/regression/api-negativos.cy.js`
 
 Os testes validam simultaneamente o status HTTP,
 o código de negócio e a mensagem de retorno.

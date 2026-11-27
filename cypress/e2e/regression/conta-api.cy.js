@@ -1,6 +1,6 @@
 
-import ContaApi from "../api/ContaApi";
-import { gerarUsuario } from "../factories/usuarioFactory";
+import ContaApi from "../../api/ContaApi";
+import { gerarUsuario } from "../../factories/usuarioFactory";
 
 describe("API - Ciclo de vida da conta", () => {
   let usuario;

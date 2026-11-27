@@ -296,7 +296,7 @@ foi reexecutado com sucesso.
 
 **Arquivo relacionado:**
 
-    cypress/e2e/catalogo-ui-api.cy.js
+    cypress/e2e/regression/catalogo-ui-api.cy.js
 
 **Aprendizado:**
 
@@ -356,7 +356,7 @@ autenticação, atualização e exclusão.
 
 **Arquivo relacionado:**
 
-    cypress/e2e/conta-api.cy.js
+    cypress/e2e/regression/conta-api.cy.js
 
 **Aprendizado:**
 
@@ -404,7 +404,7 @@ O teste de atualização da conta também foi ajustado:
 **Arquivos relacionados:**
 
 - cypress/factories/usuarioFactory.js
-- cypress/e2e/conta-api.cy.js
+- cypress/e2e/regression/conta-api.cy.js
 
 **Validação:**
 
@@ -439,6 +439,8 @@ as restrições operacionais e os padrões solicitados.
 | IA-003 | Manipulação incorreta de coleção jQuery | Erro de execução | Conversão explícita para array |
 | IA-004 | Suposição incorreta sobre campos da API | Falha de validação | Mapeamento dos campos |
 | IA-005 | Prefixo obrigatório não atendido | Não conformidade com o desafio | Factory e teste corrigidos |
+| IA-006 | Separação inadequada das suítes | Não conformidade com o desafio | Separação física por pastas |
+| IA-007 | Leitura de diretório como arquivo | Falha no script auxiliar | Validação is_file e exclusão de diretórios gerados |
 
 Esses problemas foram identificados por meio
 de execução prática, análise de evidências
@@ -593,3 +595,85 @@ seus resultados e limitações.
 - [Bugs e achados](ACHADOS.md)
 - [Decisões técnicas](DECISOES.md)
 - [Instruções de execução](README.md)
+
+---
+
+## Complemento da auditoria final de IA
+
+### IA-006 — Atendimento incompleto ao requisito de separação das suítes
+
+**Problema identificado:**
+
+A IA propôs inicialmente a separação das suítes por
+seleção de arquivos no package.json.
+
+Embora funcional, essa abordagem não atendia
+literalmente ao requisito de separação por tag ou pasta.
+
+**Identificação:**
+
+A divergência foi identificada durante a revisão
+final dos requisitos do desafio.
+
+**Correção:**
+
+Os testes foram reorganizados em diretórios smoke
+e regression, com atualização dos imports, comandos
+de execução e documentação.
+
+**Validação:**
+
+- 19 imports relativos válidos.
+- Smoke Testing: 3/3 aprovados.
+- Regressão completa: 21/21 contabilizados como aprovados.
+- Nenhuma falha inesperada.
+
+**Aprendizado:**
+
+Uma solução tecnicamente funcional não garante
+aderência integral aos requisitos estabelecidos.
+
+### IA-007 — Falha no script auxiliar de auditoria de imports
+
+**Problema identificado:**
+
+O script Python sugerido pela IA tentou ler um
+diretório de screenshots cujo nome terminava em .js.
+
+Isso provocou uma exceção IsADirectoryError.
+
+**Identificação:**
+
+O erro foi observado no terminal durante a
+validação dos imports.
+
+**Correção:**
+
+Foi adicionada uma verificação is_file() e foram
+desconsiderados os diretórios de screenshots,
+videos e results.
+
+**Validação:**
+
+O script corrigido verificou 19 imports,
+todos válidos, sem apresentar novas exceções.
+
+**Aprendizado:**
+
+Scripts auxiliares de auditoria também precisam
+ser validados e considerar a estrutura real
+do ambiente de execução.
+
+## Consolidação dos aprendizados
+
+Ao final do projeto, foram documentadas sete
+ocorrências de erros ou limitações nas soluções
+propostas pela IA.
+
+A identificação e correção dessas ocorrências
+reforçam a importância da revisão crítica,
+da validação prática e da rastreabilidade.
+
+Evidência complementar:
+
+[Regressão pós-refatoração](evidencias/REGRESSAO-POS-REFATORACAO/RESULTADO.md)

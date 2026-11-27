@@ -51,7 +51,7 @@ premissas registradas no PLANEJAMENTO.md.
 
 Arquivo:
 
-`cypress/e2e/acesso-loja.cy.js`
+`cypress/e2e/smoke/acesso-loja.cy.js`
 
 Este cenário valida elementos funcionais da página,
 não apenas o sucesso da navegação ou o status HTTP.
@@ -85,8 +85,8 @@ quantidades, dos preços e dos subtotais.
 
 Arquivos:
 
-- `cypress/e2e/carrinho.cy.js`
-- `cypress/e2e/carrinho-known-bugs.cy.js`
+- `cypress/e2e/regression/carrinho.cy.js`
+- `cypress/e2e/regression/carrinho-known-bugs.cy.js`
 
 ### 4.3 Partição de equivalência
 
@@ -180,9 +180,9 @@ dados apresentados pela interface e pela API.
 
 Arquivos:
 
-- `cypress/e2e/catalogo-api.cy.js`
-- `cypress/e2e/catalogo-ui-api.cy.js`
-- `cypress/e2e/api-negativos.cy.js`
+- `cypress/e2e/smoke/catalogo-api.cy.js`
+- `cypress/e2e/regression/catalogo-ui-api.cy.js`
+- `cypress/e2e/regression/api-negativos.cy.js`
 
 ### 5.3 Partição de equivalência da busca
 
@@ -236,8 +236,8 @@ a autenticação e a exclusão dos registros fictícios.
 
 Arquivos:
 
-- `cypress/e2e/conta-api.cy.js`
-- `cypress/e2e/api-negativos.cy.js`
+- `cypress/e2e/regression/conta-api.cy.js`
+- `cypress/e2e/regression/api-negativos.cy.js`
 - `cypress/api/ContaApi.js`
 - `cypress/factories/usuarioFactory.js`
 
@@ -327,7 +327,7 @@ catálogo, carrinho, checkout e confirmação do pedido.
 
 Arquivo:
 
-`cypress/e2e/compra-e2e.cy.js`
+`cypress/e2e/regression/compra-e2e.cy.js`
 
 ### 7.3 Fluxo automatizado
 

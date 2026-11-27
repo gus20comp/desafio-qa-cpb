@@ -1,13 +1,13 @@
 
-import ContaApi from "../api/ContaApi";
-import { gerarUsuario } from "../factories/usuarioFactory";
-import LoginPage from "../pages/LoginPage";
-import ProdutosPage from "../pages/ProdutosPage";
-import DetalhesProdutoPage from "../pages/DetalhesProdutoPage";
-import CarrinhoPage from "../pages/CarrinhoPage";
-import CheckoutPage from "../pages/CheckoutPage";
-import PagamentoPage from "../pages/PagamentoPage";
-import { converterPreco } from "../utils/moeda";
+import ContaApi from "../../api/ContaApi";
+import { gerarUsuario } from "../../factories/usuarioFactory";
+import LoginPage from "../../pages/LoginPage";
+import ProdutosPage from "../../pages/ProdutosPage";
+import DetalhesProdutoPage from "../../pages/DetalhesProdutoPage";
+import CarrinhoPage from "../../pages/CarrinhoPage";
+import CheckoutPage from "../../pages/CheckoutPage";
+import PagamentoPage from "../../pages/PagamentoPage";
+import { converterPreco } from "../../utils/moeda";
 
 describe("Compra completa - E2E", () => {
   let usuario;

@@ -1,7 +1,7 @@
-import ProdutosPage from "../pages/ProdutosPage";
-import CarrinhoPage from "../pages/CarrinhoPage";
-import DetalhesProdutoPage from "../pages/DetalhesProdutoPage";
-import { converterPreco } from "../utils/moeda";
+import ProdutosPage from "../../pages/ProdutosPage";
+import CarrinhoPage from "../../pages/CarrinhoPage";
+import DetalhesProdutoPage from "../../pages/DetalhesProdutoPage";
+import { converterPreco } from "../../utils/moeda";
 
 describe("Carrinho de compras - Visitante", () => {
 

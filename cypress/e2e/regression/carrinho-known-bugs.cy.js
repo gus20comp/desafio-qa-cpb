@@ -1,7 +1,7 @@
 
-import ProdutosPage from "../pages/ProdutosPage";
-import DetalhesProdutoPage from "../pages/DetalhesProdutoPage";
-import CarrinhoPage from "../pages/CarrinhoPage";
+import ProdutosPage from "../../pages/ProdutosPage";
+import DetalhesProdutoPage from "../../pages/DetalhesProdutoPage";
+import CarrinhoPage from "../../pages/CarrinhoPage";
 
 describe("Carrinho - Defeitos conhecidos", () => {
   let produto;

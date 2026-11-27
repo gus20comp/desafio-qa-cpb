@@ -142,19 +142,19 @@ não indicadores estatísticos de produção.
 
 ### 4.2 Matriz de riscos
 
-| ID | Frente | Risco | Prob. | Impacto | Pontos | Nível |
+| ID | Frente | Risco | Probabilidade | Impacto | Pontuação | Prioridade |
 |---|---|---|---:|---:|---:|---|
 | R01 | Compra E2E | Pedido confirmado com valor incorreto | 3 | 3 | 9 | Alto |
-| R02 | Carrinho | Aceitação de quantidade inválida | 3 | 3 | 9 | Alto |
-| R03 | Conta API | Exposição ou alteração indevida de dados pessoais | 2 | 3 | 6 | Alto |
 | R04 | Compra E2E | Falha na conclusão do pedido | 2 | 3 | 6 | Alto |
+| R02 | Carrinho | Aceitação de quantidade inválida | 3 | 3 | 9 | Alto |
 | R05 | Carrinho | Cálculo incorreto de subtotal | 2 | 3 | 6 | Alto |
-| R06 | Ambiente | Indisponibilidade ou restrição de acesso | 3 | 3 | 9 | Alto |
+| R10 | Carrinho | Remoção incorreta de produtos | 2 | 2 | 4 | Médio |
+| R03 | Conta API | Exposição ou alteração indevida de dados pessoais | 2 | 3 | 6 | Alto |
 | R07 | Conta API | Falha na criação, atualização ou exclusão da conta | 2 | 3 | 6 | Alto |
 | R08 | Catálogo | Divergência entre interface e API | 2 | 3 | 6 | Alto |
-| R09 | API | Erros de negócio retornados com HTTP 200 | 3 | 2 | 6 | Alto |
-| R10 | Carrinho | Remoção incorreta de produtos | 2 | 2 | 4 | Médio |
 | R11 | Catálogo | Pesquisa com resultados inconsistentes | 2 | 2 | 4 | Médio |
+| R06 | Ambiente | Indisponibilidade ou restrição de acesso | 3 | 3 | 9 | Alto |
+| R09 | API | Erros de negócio retornados com HTTP 200 | 3 | 2 | 6 | Alto |
 | R12 | API | JSON retornado com Content-Type inadequado | 3 | 1 | 3 | Médio |
 
 ### 4.3 Ordem de prioridade por frente

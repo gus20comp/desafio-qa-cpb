@@ -96,14 +96,16 @@ distintas.
     ├── api/
     │   └── ContaApi.js
     ├── e2e/
-    │   ├── acesso-loja.cy.js
-    │   ├── api-negativos.cy.js
-    │   ├── carrinho-known-bugs.cy.js
-    │   ├── carrinho.cy.js
-    │   ├── catalogo-api.cy.js
-    │   ├── catalogo-ui-api.cy.js
-    │   ├── compra-e2e.cy.js
-    │   └── conta-api.cy.js
+    │   ├── smoke/
+    │   │   ├── acesso-loja.cy.js
+    │   │   └── catalogo-api.cy.js
+    │   └── regression/
+    │       ├── api-negativos.cy.js
+    │       ├── carrinho-known-bugs.cy.js
+    │       ├── carrinho.cy.js
+    │       ├── catalogo-ui-api.cy.js
+    │       ├── compra-e2e.cy.js
+    │       └── conta-api.cy.js
     ├── factories/
     │   └── usuarioFactory.js
     ├── pages/
