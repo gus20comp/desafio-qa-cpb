@@ -1,0 +1,60 @@
+
+name: QA Pipeline - Cypress
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  testes-automatizados:
+    name: Testes automatizados de QA
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout do repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Verificar Cypress
+        run: npx cypress verify
+
+      - name: Verificar navegador Chrome
+        run: google-chrome --version
+
+      - name: Executar Smoke Testing
+        if: github.event_name == 'push'
+        run: npm run test:smoke -- --browser chrome
+
+      - name: Executar Regression Testing
+        if: github.event_name != 'push'
+        run: npm run test:regression -- --browser chrome
+
+      - name: Publicar evidencias dos testes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidencias-cypress-${{ github.run_id }}
+          path: |
+            cypress/screenshots/
+            cypress/videos/
+          if-no-files-found: ignore
+          retention-days: 14
