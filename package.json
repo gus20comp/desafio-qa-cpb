@@ -1,4 +1,12 @@
+
 {
+  "scripts": {
+    "test": "cypress run",
+    "test:smoke": "cypress run --spec \"cypress/e2e/acesso-loja.cy.js,cypress/e2e/catalogo-api.cy.js\"",
+    "test:regression": "cypress run",
+    "test:api": "cypress run --spec \"cypress/e2e/catalogo-api.cy.js,cypress/e2e/conta-api.cy.js,cypress/e2e/api-negativos.cy.js\"",
+    "test:e2e": "cypress run --spec \"cypress/e2e/acesso-loja.cy.js,cypress/e2e/catalogo-ui-api.cy.js,cypress/e2e/carrinho.cy.js,cypress/e2e/carrinho-known-bugs.cy.js,cypress/e2e/compra-e2e.cy.js\""
+  },
   "devDependencies": {
     "cypress": "^16.4.0"
   },
