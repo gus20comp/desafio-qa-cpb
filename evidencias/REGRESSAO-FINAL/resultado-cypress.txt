@@ -1,0 +1,294 @@
+npm run test:regression
+
+> test:regression
+> cypress run
+
+
+====================================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        16.4.0                                                                         │
+  │ Browser:        Electron 150 (headless) (deprecated)                                           │
+  │ Node Version:   v24.22.2 (/usr/local/share/nvm/versions/node/v24.22.2/bin/node)                │
+  │ Specs:          8 found (acesso-loja.cy.js, api-negativos.cy.js, carrinho-known-bugs.cy.js, ca │
+  │                 rrinho.cy.js, catalogo-api.cy.js, catalogo-ui-api.cy.js, compra-e2e.cy.js, con │
+  │                 ta-api.cy.js)                                                                  │
+  │ Searched:       cypress/e2e/**/*.cy.js                                                         │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Warning: The Electron browser is deprecated as a test browser and will be removed in a future version of Cypress.
+
+Switch to Chrome or another installed browser to avoid a breaking change when you upgrade.
+
+Read more about supported browsers: https://on.cypress.io/launching-browsers
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  acesso-loja.cy.js                                                               (1 of 8)
+
+
+  Acesso à loja virtual
+    ✓ deve carregar a página inicial com os elementos essenciais (3387ms)
+
+
+  1 passing (4s)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        1                                                                                │
+  │ Passing:      1                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     3 seconds                                                                        │
+  │ Spec Ran:     acesso-loja.cy.js                                                                │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  api-negativos.cy.js                                                             (2 of 8)
+
+
+  API - Cenarios negativos
+    ✓ [API-NEG-01] deve rejeitar POST na listagem de produtos (421ms)
+    ✓ [API-NEG-02] deve rejeitar pesquisa sem parametro obrigatorio (162ms)
+    ✓ [API-NEG-03] deve rejeitar login sem email (159ms)
+    ✓ [API-NEG-04] deve rejeitar login sem senha (218ms)
+    ✓ [API-NEG-05] deve rejeitar login com credenciais invalidas (139ms)
+    ✓ [API-NEG-06] deve rejeitar DELETE no endpoint de login (139ms)
+    ✓ [API-NEG-07] deve rejeitar PUT na listagem de marcas (210ms)
+
+
+  7 passing (2s)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        7                                                                                │
+  │ Passing:      7                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     1 second                                                                         │
+  │ Spec Ran:     api-negativos.cy.js                                                              │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  carrinho-known-bugs.cy.js                                                       (3 of 8)
+
+
+  Carrinho - Defeitos conhecidos
+    ✓ [XFAIL][BUG-001] nao deve permitir produto com quantidade zero no carrinho (6681ms)
+
+
+  1 passing (7s)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        1                                                                                │
+  │ Passing:      1                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  1                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     6 seconds                                                                        │
+  │ Spec Ran:     carrinho-known-bugs.cy.js                                                        │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  /workspaces/desafio-qa-cpb/cypress/screenshots/carrinho-known-bugs.cy.js/BUG-001    (1000x1187)
+     -expected-failure.png                                                                          
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  carrinho.cy.js                                                                  (4 of 8)
+
+
+  Carrinho de compras - Visitante
+    ✓ deve adicionar um produto ao carrinho sem autenticacao (3697ms)
+    ✓ deve validar o subtotal para 1 unidade(s) (3953ms)
+    ✓ deve validar o subtotal para 2 unidade(s) (4085ms)
+    ✓ deve validar o subtotal para 5 unidade(s) (3932ms)
+    ✓ deve adicionar multiplos produtos ao carrinho (3660ms)
+    ✓ deve remover um produto e manter os demais no carrinho (3118ms)
+    ✓ deve apresentar o carrinho vazio apos remover o ultimo produto (3634ms)
+
+
+  7 passing (27s)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        7                                                                                │
+  │ Passing:      7                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     27 seconds                                                                       │
+  │ Spec Ran:     carrinho.cy.js                                                                   │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  catalogo-api.cy.js                                                              (5 of 8)
+
+
+  API - Catálogo de produtos
+    ✓ deve retornar a lista de produtos com dados válidos (1518ms)
+    ✓ deve pesquisar produtos pela API (206ms)
+
+
+  2 passing (2s)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        2                                                                                │
+  │ Passing:      2                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     1 second                                                                         │
+  │ Spec Ran:     catalogo-api.cy.js                                                               │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  catalogo-ui-api.cy.js                                                           (6 of 8)
+
+
+  Comparação entre catálogo da API e interface
+    ✓ deve apresentar na tela os mesmos produtos retornados pela API (3222ms)
+
+
+  1 passing (3s)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        1                                                                                │
+  │ Passing:      1                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     3 seconds                                                                        │
+  │ Spec Ran:     catalogo-ui-api.cy.js                                                            │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  compra-e2e.cy.js                                                                (7 of 8)
+
+
+  Compra completa - E2E
+    ✓ deve realizar uma compra completa com sucesso (19146ms)
+
+
+  1 passing (20s)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        1                                                                                │
+  │ Passing:      1                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  2                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     19 seconds                                                                       │
+  │ Spec Ran:     compra-e2e.cy.js                                                                 │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  /workspaces/desafio-qa-cpb/cypress/screenshots/compra-e2e.cy.js/E2E-01-checkout-    (1000x1951)
+     validado.png                                                                                   
+  -  /workspaces/desafio-qa-cpb/cypress/screenshots/compra-e2e.cy.js/E2E-02-pedido-co     (1000x889)
+     nfirmado.png                                                                                   
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  conta-api.cy.js                                                                 (8 of 8)
+
+
+  API - Ciclo de vida da conta
+    ✓ deve executar o ciclo de vida completo da conta (1816ms)
+
+
+  1 passing (2s)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        1                                                                                │
+  │ Passing:      1                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     1 second                                                                         │
+  │ Spec Ran:     conta-api.cy.js                                                                  │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+====================================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✔  acesso-loja.cy.js                        00:03        1        1        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  api-negativos.cy.js                      00:01        7        7        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  carrinho-known-bugs.cy.js                00:06        1        1        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  carrinho.cy.js                           00:27        7        7        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  catalogo-api.cy.js                       00:01        2        2        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  catalogo-ui-api.cy.js                    00:03        1        1        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  compra-e2e.cy.js                         00:19        1        1        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  conta-api.cy.js                          00:01        1        1        -        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    ✔  All specs passed!                        01:05       21       21        -        -        - 
