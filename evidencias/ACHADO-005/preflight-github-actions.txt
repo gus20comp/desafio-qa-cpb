@@ -1,0 +1,24 @@
+
+ACHADO-005 - Restricao de acesso no GitHub Actions
+
+Commit: c02672d
+Ambiente: GitHub Actions
+Etapa: Diagnostico de disponibilidade do ambiente
+
+[PREFLIGHT] Iniciando diagnostico do ambiente
+
+[PREFLIGHT] Verificando: Pagina inicial
+Status HTTP: 200
+Content-Type: text/html; charset=utf-8
+[FALHA] Pagina inicial: Pagina de verificacao ou indisponibilidade detectada
+
+[PREFLIGHT] Verificando: API de produtos
+Status HTTP: 200
+Content-Type: text/html; charset=utf-8
+[FALHA] API de produtos: Pagina de verificacao ou indisponibilidade detectada
+
+[PREFLIGHT] Ambiente nao validado.
+- Pagina inicial: Pagina de verificacao ou indisponibilidade detectada
+- API de produtos: Pagina de verificacao ou indisponibilidade detectada
+
+Error: Process completed with exit code 1.
