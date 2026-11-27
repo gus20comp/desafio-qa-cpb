@@ -31,6 +31,13 @@ jobs:
           node-version: '24'
           cache: 'npm'
 
+      - name: Diagnostico de disponibilidade do ambiente
+        shell: bash
+        run: |
+          mkdir -p cypress/results
+          set -o pipefail
+          node scripts/preflight.js 2>&1 | tee cypress/results/preflight.log
+
       - name: Instalar dependencias
         run: npm ci
 
@@ -56,5 +63,6 @@ jobs:
           path: |
             cypress/screenshots/
             cypress/videos/
+            cypress/results/
           if-no-files-found: ignore
           retention-days: 14
