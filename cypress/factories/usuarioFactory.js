@@ -5,7 +5,7 @@ export function gerarUsuario() {
     .substring(2, 10)}`;
 
   return {
-    name: "Usuario QA",
+    name: "QA_Usuario",
     email: `qa.${identificador}@example.com`,
     password: "TesteQA@2026",
     title: "Mr",

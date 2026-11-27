@@ -57,7 +57,7 @@ describe("API - Ciclo de vida da conta", () => {
   it("deve executar o ciclo de vida completo da conta", () => {
     const usuarioAtualizado = {
       ...usuario,
-      name: "Usuario QA Atualizado",
+      name: "QA_Usuario Atualizado",
       lastname: "Atualizado",
       company: "Empresa QA Atualizada",
       address1: "Rua Atualizada, 200",
